@@ -55,7 +55,12 @@ for file in glob("assets/temp/audio*"):
 
 if not os.path.exists("assets/background.mp4"):
     print("Background video not found, downloading background video. This is an one-time process and might take a while.")
-    youtube_video = youtube(background_video_url).streams.filter(fps=60, res="1080p", mime_type="video/mp4", only_video=True).first()
+    youtube_video = False
+    # if there is no youtube video at provided url, use default video url
+    try:
+        youtube_video = youtube(background_video_url).streams.filter(fps=60, res="1080p", mime_type="video/mp4", only_video=True).first()
+    except:
+        youtube_video = youtube("https://www.youtube.com/watch?v=n_Dv4JMiwK8").streams.filter(fps=60, res="1080p", mime_type="video/mp4", only_video=True).first()
     youtube_video_filesize = youtube_video.filesize/1048576
     if youtube_video_filesize > 1024:
         youtube_video_filesize = "{} {}".format(round(youtube_video_filesize/1024, 1), "GB")
