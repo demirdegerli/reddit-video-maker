@@ -1,5 +1,13 @@
 import os
 from dotenv import load_dotenv
+from gtts.langs import _main_langs
+import validators
+
+def key_and_value(dictionary):
+    dictionary_stringified = ""
+    for key, value in dictionary.items():
+        dictionary_stringified += "{}: {}\n".format(key, value)
+    return dictionary_stringified
 
 load_dotenv()
 
@@ -16,7 +24,7 @@ background_video_url = "https://www.youtube.com/watch?v=n_Dv4JMiwK8" # video mus
 background_video_start = 10 # background video start in seconds / if video actually starts at beginning, enter 0
 pick_random = True # default is true / if it's false user will prompted for entering post link
 
-env_prompt = input(""".env file invalid or does not exists. Be sure you have these credentials:
+env_prompt = input("""Entering setup. Be sure you have these credentials:
 Client ID
 Client Secret
 Comment length to select
@@ -28,6 +36,7 @@ Language (tts language)
 Background video URL
 Background video start (background video actually start time)
 Pick random (random post or entered post link)
+
 Continue? (yes/no) > """).lower()
 if env_prompt == "yes":
     default_prompt = input("Use default settings? (yes/no) > ").lower()
@@ -46,41 +55,66 @@ if env_prompt == "yes":
         client_secret = input("Client Secret: ")
         while not client_secret:
             client_secret = input("Client Secret: ")
-        comment_length_to_select = input("Comment length to select: ")
-        while not comment_length_to_select.isdigit():
-            comment_length_to_select = input("Comment length to select: ")
-        comment_length_to_select = int(comment_length_to_select)
-        subreddit = input("Subreddit: ")
-        while not subreddit:
-            subreddit = input("Subreddit: ")
-        post_scan_limit = input("Post scan limit (how much posts scanned in random instance): ")
-        while not post_scan_limit.isdigit():
-            post_scan_limit = input("Post scan limit (how much posts scanned in random instance): ")
-        post_scan_limit = int(post_scan_limit)
-        character_limit = input("Character limit (character limit for texts): ")
-        while not character_limit.isdigit():
-            character_limit = input("Character limit (character limit for texts): ")
-        character_limit = int(character_limit)
-        flair = input("Flair (flair name / if there's no flair, type \"there is no flair\" without quotes): ")
-        while not flair:
-            flair = input("Flair: ")
-        if flair.lower() == "there is no flair":
-            flair = False
-        language = input("Language (tts language): ")
-        while not language:
-            language = input("Language (tts language): ")
-        background_video_url = input("Background video URL: ")
-        while not background_video_url:
-            background_video_url = input("Background video URL: ")
-        background_video_start = input("Background video start (background video actually start time): ")
-        while not background_video_start.isdigit():
-            background_video_start = input("Background video start (background video actually start time): ")
-        background_video_start = int(background_video_start)
-        pick_random = input("Pick random (random post or entered post link) (yes/no): ").lower()
-        while not pick_random == "yes" or pick_random == "no":
-            pick_random = input("Pick random (random post or entered post link): ")
-        if pick_random == "yes":
+        comment_length_to_select_p = input("Comment length to select (press enter with nothing entered for use default): ")
+        if comment_length_to_select_p:
+            while not comment_length_to_select_p.isdigit():
+                if not comment_length_to_select_p:
+                    break
+                comment_length_to_select_p = input("Comment length to select (press enter with nothing entered for use default): ")
+            if comment_length_to_select_p:
+                comment_length_to_select = int(comment_length_to_select_p)
+        subreddit_p = input("Subreddit (press enter with nothing entered for use default): ")
+        if subreddit_p:
+            subreddit = subreddit_p
+        post_scan_limit_p = input("Post scan limit (how much posts scanned in random instance / press enter with nothing entered for use default): ")
+        if post_scan_limit_p:
+            while not post_scan_limit_p.isdigit():
+                if not post_scan_limit_p:
+                    break
+                post_scan_limit_p = input("Post scan limit (how much posts scanned in random instance / press enter with nothing entered for use default): ")
+            if post_scan_limit_p:
+                post_scan_limit = int(post_scan_limit_p)
+        character_limit_p = input("Character limit (character limit for texts / press enter with nothing entered for use default): ")
+        if character_limit_p:
+            while not character_limit_p.isdigit():
+                if not character_limit_p:
+                    break
+                character_limit_p = input("Character limit (character limit for texts / press enter with nothing entered for use default): ")
+            if character_limit_p:
+                character_limit = int(character_limit_p)
+        flair_p = input("Flair (flair name / if there's no flair press enter with nothing entered): ")
+        if flair_p:
+            flair = flair_p
+        print(key_and_value(_main_langs()))
+        language_p = input("Language (tts language / press enter with nothing entered for use default): ")
+        if language_p:
+            while language_p not in _main_langs():
+                if not language_p:
+                    break
+                language_p = input("Language (tts language / press enter with nothing entered for use default): ")
+            if language_p:
+                language = language_p
+        background_video_url_p = input("Background video URL (press enter with nothing entered for use default): ")
+        if background_video_url_p:
+            while not validators.url(background_video_url_p):
+                if not background_video_url_p:
+                    break
+                background_video_url_p = input("Background video URL (press enter with nothing entered for use default): ")
+            if background_video_url_p:
+                background_video_url = background_video_url_p
+        background_video_start_p = input("Background video start (background video actually start time / press enter with nothing entered for use default): ")
+        if background_video_start_p:
+            while not background_video_start_p.isdigit():
+                if not background_video_start_p:
+                    break
+                background_video_start_p = input("Background video start (background video actually start time / press enter with nothing entered for use default): ")
+            if background_video_start_p:
+                background_video_start = background_video_start_p
+        pick_random_p = input("Pick random (random post or entered post link) (yes/no/press enter with nothing entered for use default): ").lower()
+        if pick_random_p == "yes":
             pick_random = True
+        elif not pick_random_p:
+            pass
         else:
             pick_random = False
     else:
@@ -103,6 +137,7 @@ PICK_RANDOM={}
     continue_prompt = input("Settings are succesfully configured. Continue as normal? (yes/no) > ")
     if continue_prompt == "yes":
         os.system("python3 main.py")
+        quit()
     else:
         print("Quiting...")
         quit()
