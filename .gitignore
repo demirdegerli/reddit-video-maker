@@ -1,0 +1,9 @@
+__pycache__/
+outputs/
+notes.md
+client_secret.json
+credentials.storage
+assets/
+.env
+test.py
+todo/

@@ -1,0 +1,6 @@
+praw
+moviepy
+gtts
+unidecode
+pytube
+validators
