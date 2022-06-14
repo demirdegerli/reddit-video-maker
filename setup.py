@@ -104,13 +104,13 @@ if env_prompt == "yes":
                 background_video_url_p = input("Background video URL (press enter with nothing entered for use default): ")
             if background_video_url_p:
                 background_video_url = background_video_url_p
-        background_video_start_p = input("Background video start (background video actually start time / press enter with nothing entered for use default): ")
-        if background_video_start_p:
+        background_video_start_p = input("Background video start (background video actually start time in seconds e.g. 2:20 -> 140 / press enter with nothing entered for use default): ")
+        if not background_video_start_p == "":
             while not background_video_start_p.isdigit():
-                if not background_video_start_p:
+                if background_video_start_p == "":
                     break
-                background_video_start_p = input("Background video start (background video actually start time / press enter with nothing entered for use default): ")
-            if background_video_start_p:
+                background_video_start_p = input("Background video start (background video actually start time in seconds e.g. 2:20 -> 140 / press enter with nothing entered for use default): ")
+            if not background_video_start_p == "":
                 background_video_start = background_video_start_p
         pick_random_p = input("Pick random (random post or entered post link) (yes/no/press enter with nothing entered for use default): ").lower()
         if pick_random_p == "yes":
