@@ -58,7 +58,6 @@ def render_video(focused_comments, post):
     for audio in audios:
         audio_duration += audio.duration
 
-    #comment_index = 0
     with_audio_comments = []
     for comment in comments:
         audio_duration = 0
@@ -70,7 +69,6 @@ def render_video(focused_comments, post):
             audios.append(audio)
             waits_duration += 1
             comment_number += 1
-            #comment_index += 1
     comments = with_audio_comments
 
     audio_duration = 0
