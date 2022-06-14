@@ -18,7 +18,7 @@ comment_length_to_select = 5
 subreddit = "AskReddit"
 post_scan_limit = 120
 character_limit = 240
-flair = False # default is false / flair name or false to flairless search
+flair = "" # default is blank / flair name or false to flairless search
 language = "en" # tts language
 background_video_url = "https://www.youtube.com/watch?v=n_Dv4JMiwK8" # video must be longer than 59 seconds
 background_video_start = 10 # background video start in seconds / if video actually starts at beginning, enter 0
@@ -85,6 +85,8 @@ if env_prompt == "yes":
         flair_p = input("Flair (flair name / if there's no flair press enter with nothing entered): ")
         if flair_p:
             flair = flair_p
+        if not flair:
+            flair = ""
         print(key_and_value(_main_langs()))
         language_p = input("Language (tts language / press enter with nothing entered for use default): ")
         if language_p:
