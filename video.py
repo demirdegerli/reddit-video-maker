@@ -82,6 +82,10 @@ def render_video(focused_comments, post):
     if not background_video_start:
         background_video_start = 0
     background = VideoFileClip("assets/background.mp4")
+    if background.duration - background_video_start < 59:
+        print("Background video must be 59 seconds or longer. If video 59 seconds or longer, try decreasing background video start.")
+        print("Quiting...")
+        quit()
     random_start = get_random(background_video_start, (round(background.duration-background_video_start)-(round(audio_duration)+1)))
     clip = (
     background.subclip(random_start, random_start+round(audio_duration)+1+1)
