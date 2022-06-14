@@ -19,6 +19,7 @@ setting_keys = [
     "BACKGROUND_VIDEO_START",
     "PICK_RANDOM"
 ]
+
 settings_valid = True
 for key in setting_keys:
     if key not in os.environ:
@@ -59,7 +60,15 @@ if not os.path.exists("assets/background.mp4"):
     # if there is no youtube video at provided url, use default video url
     try:
         youtube_video = youtube(background_video_url).streams.filter(fps=60, res="1080p", mime_type="video/mp4", only_video=True).first()
+        if not youtube_video:
+            youtube_video = youtube(background_video_url).streams.filter(res="1080p", mime_type="video/mp4", only_video=True).first()
+        if not youtube_video:
+            youtube_video = youtube(background_video_url).streams.filter(res="720p", mime_type="video/mp4", only_video=True).first()
+        if not youtube_video:
+            youtube_video = youtube(background_video_url).streams.filter(res="480p", mime_type="video/mp4", only_video=True).first()
     except:
+        youtube_video = youtube("https://www.youtube.com/watch?v=n_Dv4JMiwK8").streams.filter(fps=60, res="1080p", mime_type="video/mp4", only_video=True).first()
+    if not youtube_video:
         youtube_video = youtube("https://www.youtube.com/watch?v=n_Dv4JMiwK8").streams.filter(fps=60, res="1080p", mime_type="video/mp4", only_video=True).first()
     youtube_video_filesize = youtube_video.filesize/1048576
     if youtube_video_filesize > 1024:
