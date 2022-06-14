@@ -136,6 +136,7 @@ BACKGROUND_VIDEO_URL="{}"
 BACKGROUND_VIDEO_START={}
 PICK_RANDOM={}
 """.format(client_id, client_secret, comment_length_to_select, subreddit, post_scan_limit, character_limit, flair, language, background_video_url, background_video_start, pick_random))
+    env.close()
     continue_prompt = input("Settings are succesfully configured. Continue as normal? (yes/no) > ")
     if continue_prompt == "yes":
         os.system("python3 main.py")
