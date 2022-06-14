@@ -1,6 +1,6 @@
 # Reddit Video Maker
 
-Reddit Video Maker gets a random or user entered post then gets it's comments and make a video from these comments.
+Reddit Video Maker gets a random or user entered post then gets it's comments and makes a video from these comments.
 
 [Sample Video](samples/sample_video.mp4)
 
