@@ -4,3 +4,4 @@ gtts
 unidecode
 pytube
 validators
+python-dotenv
