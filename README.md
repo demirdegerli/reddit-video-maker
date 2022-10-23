@@ -4,8 +4,15 @@ Reddit Video Maker gets a random or user entered post then gets it's comments an
 
 https://user-images.githubusercontent.com/67432156/179314072-11e87099-8845-42be-bb9b-9f13dc391145.mp4
 
+**Note: Please use the latest commit if you're not testing something. This tool has not specific versions.**
 
 ## Get started
+
+### Clone the repository
+```
+git clone https://github.com/demirdegerli/reddit-video-maker.git
+cd ./reddit-video-maker
+```
 
 ### Install packages
 ```
