@@ -1,9 +1,10 @@
-from moviepy.editor import VideoFileClip, AudioFileClip, TextClip, CompositeVideoClip, CompositeAudioClip
+from moviepy.editor import VideoFileClip, AudioFileClip, TextClip, CompositeVideoClip, CompositeAudioClip, ImageClip
 from gtts import gTTS
 from gtts.langs import _main_langs
 from random import randint as get_random
 import os
 from glob import glob
+from moviepy.config import IMAGEMAGICK_BINARY
 #-------------------------------------------------------------------------------------------------------------#
 from utils import *
 
@@ -14,7 +15,7 @@ language = os.getenv("TTS_LANGUAGE")
 background_video_start = int(os.getenv("BACKGROUND_VIDEO_START"))
 
 def render_video(focused_comments, post):
-    global language, background_video_start
+    global language, background_video_start, text_number
     comments = []
     # prepare comments for video
     for comment in focused_comments:
@@ -40,8 +41,22 @@ def render_video(focused_comments, post):
         audio_obj.save("assets/temp/{}.mp3".format(filename))
         return AudioFileClip("assets/temp/{}.mp3".format(filename)).set_start(start)
 
+    text_number = 1
     def create_text(content, fontsize, start, duration):
-        return TextClip(content, fontsize=fontsize, method='caption', color='white', interline=True, stroke_color='black', stroke_width=2).set_position('center').subclip(0, duration).set_start(start)
+        textclip = None
+        try:
+            textclip = TextClip(content, font='Tahoma', size='1070x', fontsize=fontsize, method='caption', color='white', interline=True, stroke_color='black', stroke_width=2).set_position('center').subclip(0, duration).set_start(start)
+        except Exception as e:
+            global text_number
+            print(e)
+            print("Text couldn't be created using the `caption` method. Trying again using the `pango` method. You can see the error above.")
+            txt = open('assets/temp/text_{}.txt'.format(text_number), 'w')
+            txt.write(content)
+            txt.close()
+            os.system("{} -define pango:markup=false -background transparent -fill white -font Tahoma -bordercolor none -border 2 -channel A -blur 2x2 -level 0,0% -pointsize {} -size 1070x -gravity center -interline-spacing 1 pango:@assets/temp/text_{}.txt -type truecolormatte PNG32:assets/temp/text_{}.png".format(IMAGEMAGICK_BINARY, fontsize, text_number, text_number))
+            textclip = ImageClip('assets/temp/text_{}.png'.format(text_number)).set_position('center').subclip(0, duration).set_start(start)
+            text_number += 1
+        return textclip
 
     waits_duration = 1
 
@@ -127,4 +142,6 @@ def render_video(focused_comments, post):
     result.write_videofile("outputs/{}.mp4".format(filename))
 
     for file in glob("assets/temp/audio*"):
+        os.remove(file)
+    for file in glob("assets/temp/text*"):
         os.remove(file)
