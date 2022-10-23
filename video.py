@@ -41,7 +41,7 @@ def render_video(focused_comments, post):
         return AudioFileClip("assets/temp/{}.mp3".format(filename)).set_start(start)
 
     def create_text(content, fontsize, start, duration):
-        return TextClip(content, fontsize=fontsize, method='caption', color='white', interline=True, stroke_color='black', stroke_width=2).set_pos('center').subclip(0, duration).set_start(start)
+        return TextClip(content, fontsize=fontsize, method='caption', color='white', interline=True, stroke_color='black', stroke_width=2).set_position('center').subclip(0, duration).set_start(start)
 
     waits_duration = 1
 
