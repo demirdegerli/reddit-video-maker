@@ -7,10 +7,16 @@ https://user-images.githubusercontent.com/67432156/179314072-11e87099-8845-42be-
 
 ## Get started
 
-Install packages
+### Install packages
 ```
 pip3 install -r requirements.txt
 ```
+
+### Install ImageMagick
+Go to the [ImageMagick download page](https://imagemagick.org/script/download.php) and install the right one.
+
+**This is required for converting texts to image.**
+
 
 ### Get Reddit credentials
 - Go to the [Reddit Apps Panel](https://www.reddit.com/prefs/apps/).
