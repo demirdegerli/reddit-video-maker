@@ -22,6 +22,13 @@ pip3 install -r requirements.txt
 ### Install ImageMagick
 Go to the [ImageMagick download page](https://imagemagick.org/script/download.php) and install the right one.
 
+### Install FFmpeg
+Install the right one from the [FFmpeg download page](https://ffmpeg.org/download.html).
+
+There are tons of guides explaining how to install FFmpeg on Internet. Follow one of these.
+
+_Note: Windows users may need to add FFmpeg to the path._
+
 **This is required for converting texts to image.**
 
 
