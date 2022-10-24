@@ -55,31 +55,31 @@ if env_prompt == "yes":
         client_secret = input("Client Secret: ")
         while not client_secret:
             client_secret = input("Client Secret: ")
-        comment_length_to_select_p = input("Comment length to select (press enter with nothing entered for use default): ")
+        comment_length_to_select_p = input("Comment length to select (press enter with nothing entered to use default): ")
         if comment_length_to_select_p:
             while not comment_length_to_select_p.isdigit():
                 if not comment_length_to_select_p:
                     break
-                comment_length_to_select_p = input("Comment length to select (press enter with nothing entered for use default): ")
+                comment_length_to_select_p = input("Comment length to select (press enter with nothing entered to use default): ")
             if comment_length_to_select_p:
                 comment_length_to_select = int(comment_length_to_select_p)
-        subreddit_p = input("Subreddit (press enter with nothing entered for use default): ")
+        subreddit_p = input("Subreddit (press enter with nothing entered to use default): ")
         if subreddit_p:
             subreddit = subreddit_p
-        post_scan_limit_p = input("Post scan limit (how much posts scanned in random instance / press enter with nothing entered for use default): ")
+        post_scan_limit_p = input("Post scan limit (how much posts scanned in random instance / press enter with nothing entered to use default): ")
         if post_scan_limit_p:
             while not post_scan_limit_p.isdigit():
                 if not post_scan_limit_p:
                     break
-                post_scan_limit_p = input("Post scan limit (how much posts scanned in random instance / press enter with nothing entered for use default): ")
+                post_scan_limit_p = input("Post scan limit (how much posts scanned in random instance / press enter with nothing entered to use default): ")
             if post_scan_limit_p:
                 post_scan_limit = int(post_scan_limit_p)
-        character_limit_p = input("Character limit (character limit for texts / press enter with nothing entered for use default): ")
+        character_limit_p = input("Character limit (character limit for texts / press enter with nothing entered to use default): ")
         if character_limit_p:
             while not character_limit_p.isdigit():
                 if not character_limit_p:
                     break
-                character_limit_p = input("Character limit (character limit for texts / press enter with nothing entered for use default): ")
+                character_limit_p = input("Character limit (character limit for texts / press enter with nothing entered to use default): ")
             if character_limit_p:
                 character_limit = int(character_limit_p)
         flair_p = input("Flair (flair name / if there's no flair press enter with nothing entered): ")
@@ -88,31 +88,31 @@ if env_prompt == "yes":
         if not flair:
             flair = ""
         print(key_and_value(_main_langs()))
-        language_p = input("Language (tts language / press enter with nothing entered for use default): ")
+        language_p = input("Language (tts language / press enter with nothing entered to use default): ")
         if language_p:
             while language_p not in _main_langs():
                 if not language_p:
                     break
-                language_p = input("Language (tts language / press enter with nothing entered for use default): ")
+                language_p = input("Language (tts language / press enter with nothing entered to use default): ")
             if language_p:
                 language = language_p
-        background_video_url_p = input("Background video URL (press enter with nothing entered for use default): ")
+        background_video_url_p = input("Background video URL (press enter with nothing entered to use default): ")
         if background_video_url_p:
             while not validators.url(background_video_url_p):
                 if not background_video_url_p:
                     break
-                background_video_url_p = input("Background video URL (press enter with nothing entered for use default): ")
+                background_video_url_p = input("Background video URL (press enter with nothing entered to use default): ")
             if background_video_url_p:
                 background_video_url = background_video_url_p
-        background_video_start_p = input("Background video start (background video actually start time in seconds e.g. 2:20 -> 140 / press enter with nothing entered for use default): ")
+        background_video_start_p = input("Background video start (background video actually start time in seconds e.g. 2:20 -> 140 / press enter with nothing entered to use default): ")
         if not background_video_start_p == "":
             while not background_video_start_p.isdigit():
                 if background_video_start_p == "":
                     break
-                background_video_start_p = input("Background video start (background video actually start time in seconds e.g. 2:20 -> 140 / press enter with nothing entered for use default): ")
+                background_video_start_p = input("Background video start (background video actually start time in seconds e.g. 2:20 -> 140 / press enter with nothing entered to use default): ")
             if not background_video_start_p == "":
                 background_video_start = background_video_start_p
-        pick_random_p = input("Pick random (random post or entered post link) (yes/no/press enter with nothing entered for use default): ").lower()
+        pick_random_p = input("Pick random (random post or entered post link) (yes/no/press enter with nothing entered to use default): ").lower()
         if pick_random_p == "yes":
             pick_random = True
         elif not pick_random_p:
