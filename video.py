@@ -45,7 +45,7 @@ def render_video(focused_comments, post):
     def create_text(content, fontsize, start, duration):
         textclip = None
         try:
-            textclip = TextClip(content, font='Tahoma', fontsize=fontsize+30, method='caption', color='white', interline=True, stroke_color='black', stroke_width=2).set_position('center').subclip(0, duration).set_start(start)
+            textclip = TextClip(content, font='Tahoma', fontsize=fontsize, method='caption', color='white', interline=True, stroke_color='black', stroke_width=2).set_position('center').subclip(0, duration).set_start(start)
         except Exception as e:
             global text_number
             print(e)
