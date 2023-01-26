@@ -1,3 +1,7 @@
+if __name__ == "__main__":
+    print("You are running the wrong script. Please run the main.py")
+    quit()
+
 import re
 from unidecode import unidecode as normalize
 from praw.models import MoreComments

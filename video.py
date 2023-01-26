@@ -1,3 +1,7 @@
+if __name__ == "__main__":
+    print("You are running the wrong script. Please run the main.py")
+    quit()
+
 from moviepy.editor import VideoFileClip, AudioFileClip, TextClip, CompositeVideoClip, CompositeAudioClip, ImageClip
 from gtts import gTTS
 from gtts.langs import _main_langs

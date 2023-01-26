@@ -1,3 +1,6 @@
+if __name__ != "__main__":
+    quit()
+
 import os
 from dotenv import load_dotenv
 from gtts.langs import _main_langs

@@ -1,3 +1,6 @@
+if __name__ != "__main__":
+    quit()
+
 import os
 from glob import glob
 from pytube import YouTube as youtube

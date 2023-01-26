@@ -1,3 +1,7 @@
+if __name__ == "__main__":
+    print("You are running the wrong script. Please run the main.py")
+    quit()
+
 import praw
 import re
 import os
