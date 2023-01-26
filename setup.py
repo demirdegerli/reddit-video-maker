@@ -109,7 +109,7 @@ if env_prompt == "yes":
             while not background_video_start_p.isdigit():
                 if background_video_start_p == "":
                     break
-                background_video_start_p = input("Background video start (background video actually start time in seconds e.g. 2:20 -> 140 / press enter with nothing entered to use default): ")
+                background_video_start_p = input("Background video start (actual start time of background video in seconds e.g. 2:20 -> 140 / press enter with nothing entered to use default): ")
             if not background_video_start_p == "":
                 background_video_start = background_video_start_p
         pick_random_p = input("Pick random (random post or entered post link) (yes/no/press enter with nothing entered to use default): ").lower()
@@ -137,7 +137,7 @@ BACKGROUND_VIDEO_START={}
 PICK_RANDOM={}
 """.format(client_id, client_secret, comment_length_to_select, subreddit, post_scan_limit, character_limit, flair, language, background_video_url, background_video_start, pick_random))
     env.close()
-    continue_prompt = input("Settings are succesfully configured. Continue as normal? (yes/no) > ")
+    continue_prompt = input("Settings are successfully configured. Continue as normal? (yes/no) > ")
     if continue_prompt == "yes":
         os.system("python3 main.py")
         quit()
