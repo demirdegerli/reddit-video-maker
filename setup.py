@@ -123,7 +123,7 @@ if env_prompt == "yes":
         else:
             pick_random = False
     else:
-        print("Quiting...")
+        print("Quitting...")
         quit()
     env = open(".env", "w")
     env.write("""
@@ -145,8 +145,8 @@ PICK_RANDOM={}
         os.system("python3 main.py")
         quit()
     else:
-        print("Quiting...")
+        print("Quitting...")
         quit()
 else:
-    print("Quiting...")
+    print("Quitting...")
     quit()
