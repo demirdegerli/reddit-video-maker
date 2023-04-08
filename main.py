@@ -33,7 +33,7 @@ if not os.path.exists(".env") or not settings_valid:
         os.system("python3 setup.py")
         quit()
     else:
-        print("Quiting...")
+        print("Quitting...")
         quit()
 
 background_video_url = os.getenv("BACKGROUND_VIDEO_URL")
@@ -91,7 +91,7 @@ else:
     post, focused_comments = get_comments()
 
 if post == False and focused_comments == False:
-    print("Quiting...")
+    print("Quitting...")
     quit()
 
 render_video(focused_comments, post)
