@@ -9,13 +9,13 @@ https://user-images.githubusercontent.com/67432156/179314072-11e87099-8845-42be-
 ## Get started
 
 ### Clone the repository
-```
+```sh
 git clone https://github.com/demirdegerli/reddit-video-maker.git
 cd ./reddit-video-maker
 ```
 
 ### Install packages
-```
+```sh
 pip3 install -r requirements.txt
 ```
 
@@ -39,7 +39,7 @@ _Note: Windows users may need to add FFmpeg to the path._
 - Get client id from under the app name and client secret from `secret` section.
 
 Run the script and follow it
-```
+```sh
 python3 main.py
 ```
 
